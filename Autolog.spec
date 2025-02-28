@@ -5,7 +5,7 @@ a = Analysis(
     ['Autolog.pyw'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('dist\\chromedriver.exe', 'dist\\chromedriver.exe')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
