@@ -7,23 +7,20 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
 def read_login_file():
-    # If running as a bundled exe, use sys._MEIPASS to get the path to the bundled files
+    
     if getattr(sys, 'frozen', False):
-        # The app is running as an executable
-        base_dir = os.path.dirname(sys.executable)  # Path where the .exe is located
+        base_dir = os.path.dirname(sys.executable)
     else:
-        # The app is running as a script, get the path to the current directory
         base_dir = os.path.dirname(os.path.realpath(__file__))
     
-    # Build the path to login.txt (make sure it's in the same directory as the .exe or script)
     login_file_path = os.path.join(base_dir, 'login.txt')
     
-    # Ensure the login.txt exists in the same folder as the .exe or script
+    # login.exe check
     if not os.path.exists(login_file_path):
         print(f"Error: login.txt file not found in {base_dir}")
         sys.exit(1)
     
-    # Read the email and password from login.txt
+    # Read login.txt
     with open(login_file_path, 'r') as file:
         email = file.readline().strip()
         password = file.readline().strip()
@@ -41,18 +38,18 @@ def login_to_gnomon(base_dir, email, password):
 
     # Initialize the WebDriver with the Service object and Chrome options
     service = Service(chromedriver_path)
-    driver = webdriver.Chrome(service=service, options=chrome_options)  # Pass options to the driver
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get("https://online.gnomon.edu")
 
-    # Find the email input field and enter the email
+    # Input Email
     email_field = driver.find_element(By.NAME, "email")
     email_field.send_keys(email)
 
-    # Find the password input field and enter the password
+    # Input Password
     password_field = driver.find_element(By.NAME, "password")
     password_field.send_keys(password)
 
-    # Find the submit button and click it
+    # Login Button
     login_button = driver.find_element(By.NAME, "commit")  # Locate by 'name' attribute
     login_button.click()
 
