@@ -5,7 +5,7 @@ set PYTHON=C:\Python311\python.exe
 set PIP=C:\Python311\Scripts\pip.exe
 set SCRIPT=AutoLogin.pyw
 set EXENAME=AutoLogin
-set DATA_FILE=credentials.txt
+set DATA_FILE=login.txt
 
 REM Get current directory absolute path
 for %%I in ("%~dp0") do set CUR_DIR=%%~fI
@@ -29,14 +29,14 @@ if errorlevel 1 (
     echo Playwright is already installed.
 )
 
-REM --- Step 2: Build the .exe with icon (NO --add-data to keep credentials.txt external) ---
+REM --- Step 2: Build the .exe with icon (NO --add-data to keep login.txt external) ---
 echo.
 echo =========================================================
 echo Starting PyInstaller Build (Output will be below this line)
 echo =========================================================
 echo.
 
-REM CRITICAL FIX: Removed the --add-data flag to keep credentials.txt external
+REM CRITICAL FIX: Removed the --add-data flag to keep login.txt external
 set "BUILD_CMD=%PYTHON% -m PyInstaller --onefile --noconsole --name %EXENAME% "%SCRIPT%""
 
 if exist "%ICON%" (
@@ -64,3 +64,4 @@ del %EXENAME%.spec >nul 2>&1
 echo.
 echo Script finished.
 pause
+
