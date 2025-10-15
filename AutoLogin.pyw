@@ -15,8 +15,8 @@ else:
     # Running from the source file (.pyw)
     base_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Set the path to the external credentials.txt (same directory as the .exe or .pyw)
-credentials_file = os.path.join(base_dir, "credentials.txt")
+# Set the path to the external login.txt (same directory as the .exe or .pyw)
+credentials_file = os.path.join(base_dir, "login.txt")
 
 # Function to read the credentials from the external text file
 def read_credentials(file_path):
@@ -97,3 +97,4 @@ try:
 except Exception:
     # Silent failure if Playwright or Brave launch fails
     sys.exit(1)
+
