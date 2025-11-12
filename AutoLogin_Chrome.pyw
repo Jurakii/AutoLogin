@@ -31,13 +31,13 @@ except Exception:
 
 # Browser Configuration 
 
-BRAVE_PATH = r"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe"
+CHROME_PATH = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 try:
     with sync_playwright() as p:
         # Launch the Browser executable
         browser = p.chromium.launch(
-            executable_path=BRAVE_PATH,
+            executable_path=CHROME_PATH,
             headless=False,
             slow_mo=50
         )

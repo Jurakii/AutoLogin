@@ -1,7 +1,7 @@
 @echo off
 set PYTHON=C:\Python311\python.exe
 set PIP=C:\Python311\Scripts\pip.exe
-set SCRIPT=AutoLogin.pyw
+set SCRIPT=AutoLogin_Chrome.pyw
 set EXENAME=AutoLogin
 set DATA_FILE=login.txt
 
@@ -56,5 +56,6 @@ del %EXENAME%.spec >nul 2>&1
 echo.
 echo Script finished.
 pause
+
 
 
